@@ -1,11 +1,8 @@
-import Pacientes from "./components/Pacientes"
+import PacientesLista from "./components/PacientesLista/PacientesLista"
 
 function App() {
   return (
-    <>
-    teste
-    <Pacientes /> 
-    </>
+    <PacientesLista /> 
   );
 }
 
