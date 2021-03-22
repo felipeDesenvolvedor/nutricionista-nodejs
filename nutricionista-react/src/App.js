@@ -1,9 +1,13 @@
-import PacientesLista from "./components/PacientesLista/PacientesLista"
+import React from "react"
+import Routes from "./Routes"
+// import PacientesLista from "./components/PacientesLista/PacientesLista"
 
 function App() {
-  return (
-    <PacientesLista /> 
-  );
+	return (
+		<>
+			<Routes /> 
+		</>
+	)
 }
 
-export default App;
+export default App

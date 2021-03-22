@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
 const Wrapper = styled.div`
     position: relative;
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
 `
 
 const Pacienteimg = styled.img.attrs((props) =>({
-    src:props.src
+	src:props.src
 }))`
     border-bottom-left-radius: 4px;
     border-top-left-radius: 4px;
@@ -36,16 +37,16 @@ const PacienteSexo = styled.span``
 const PacienteIdade = styled.span``
 
 const PacienteBox = ({src, nome, sexo, idade}) => {
-    return (
-        <Wrapper>
-            <Pacienteimg src={src}/>
-            <PacienteDados>
-                <PacienteNome>{nome}</PacienteNome>
-                <PacienteSexo>{sexo}</PacienteSexo>
-                <PacienteIdade>{idade}</PacienteIdade>
-            </PacienteDados>
-        </Wrapper>   
-    )
+	return (
+		<Wrapper>
+			<Pacienteimg src={src}/>
+			<PacienteDados>
+				<PacienteNome>{nome}</PacienteNome>
+				<PacienteSexo>{sexo}</PacienteSexo>
+				<PacienteIdade>{idade}</PacienteIdade>
+			</PacienteDados>
+		</Wrapper>   
+	)
 }
 
 export default PacienteBox
