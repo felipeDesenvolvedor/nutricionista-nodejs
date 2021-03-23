@@ -1,13 +1,13 @@
 import React from "react"
 import Menu from "../components/Menu/Menu"
 
-const Users = () => {
+const Alimentos = () => {
 	return (
 		<>
 			<Menu />
-			<h2>Users 2</h2>
+			<div>Alimentos</div>
 		</>
 	)
 }
 
-export default Users
+export default Alimentos
