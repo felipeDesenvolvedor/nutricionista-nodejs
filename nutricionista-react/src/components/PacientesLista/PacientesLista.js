@@ -7,6 +7,7 @@ import Foto from "../../assets/foto.jpg"
 const Wrapper = styled.div`
     display:grid;
     grid-template: auto auto auto / auto auto auto;
+	grid-area:content;
 `
 
 
@@ -40,7 +41,7 @@ class PacientesLista extends React.Component {
 
 	render() {
 		return (
-			<Wrapper> 
+			<Wrapper className={this.props.className}> 
 				{this.state.pacientes.map((item, index) => (
 					<div key={index}>
 						<PacienteBox key={index} src={Foto} nome={item.nome} sexo={item.sexo} idade={item.dataNascimento}/>

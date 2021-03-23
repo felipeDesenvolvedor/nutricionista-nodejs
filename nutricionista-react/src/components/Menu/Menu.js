@@ -1,10 +1,14 @@
 import React from "react"
+import styled from "styled-components"
 import {Link} from "react-router-dom"
 
+const MenuStyled = styled.nav`
+	grid-area:menu;
+`
 
-const Menu = () => {
+const Menu = ({className}) => {
 	return (
-		<nav>
+		<MenuStyled className={className} >
 			<ul>
 				<li>
 					<Link to="#">operações</Link>
@@ -31,13 +35,13 @@ const Menu = () => {
 					<Link to="/financeiro">Financeiro</Link>
 				</li>
 				<li>
-					<Link to="/secretaria">Secretaria</Link>
+					<Link to="/secretarias">Secretaria</Link>
 				</li>
 				<li>
 					<Link to="/configuracoes">Configuracoes</Link>
 				</li>
 			</ul>
-		</nav>
+		</MenuStyled>
 	)
 }
 
