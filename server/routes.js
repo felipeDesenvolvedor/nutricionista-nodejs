@@ -1,31 +1,46 @@
 const express = require('express');
-const {pacienteFindAll} = require("./UserProfile");
+const {UserProfileFindAll, UserProfileSave, UserProfileFindId, UserProfileUpdate} = require("./UserProfile");
+const { response } = require('express');
 const routes = express.Router();
 
-routes.get('/', (req, res) => {
-    // pacienteFindAll()
-    // .then(paciente => {
-    //     return paciente
-    // })
-    // .then(response => {
-    //     return res.json(response)
-    // })
+routes.get('/userprofile', (req, res) => {
+    UserProfileFindAll()
+    .then(paciente => {
+        return paciente
+    })
+    .then(response => {
+        return res.json(response)
+    })
 })
-
 
 routes.route('/userprofile/:id')
 .get((req, res) => {
-    res.json({"id":req.params.id})
+    UserProfileFindId(req.params.id)
+    .then(user => user)
+    .then(response => {
+        return res.json(response)
+    })
 })
 .put((req, res) => {
-    res.json({"id":req.params.id})
+    const {name, email, password} = req.body
+    const {id} = req.params
+    
+    UserProfileUpdate({id, name, email, password})
+    .then(updated => {
+        res.json({updated:updated})
+    })
 })
 .delete((req, res) => {
     res.json({"id":req.params.id})
 })
 
 routes.post('/userprofile', (req, res) => {
-    res.json(req.body)
+    const {name, email, password} = req.body
+    
+    UserProfileSave({name, email, password})
+    .then(user => {
+        res.json({id: user})
+    })
 })
 
 

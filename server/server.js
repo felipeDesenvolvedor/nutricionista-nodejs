@@ -9,3 +9,5 @@ app.use(express.urlencoded({ extended: true }))
 app.use(routes);
 
 app.listen(3001)
+
+//https://qastack.com.br/software/163506/how-does-one-handle-sensitive-data-when-using-github-and-heroku
