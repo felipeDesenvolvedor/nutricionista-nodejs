@@ -1,5 +1,5 @@
 const express = require('express');
-const {UserProfileFindAll, UserProfileSave, UserProfileFindId, UserProfileUpdate, MetabolismSave, MetabolismDelete} = require("./Models");
+let ControllerUserProfile = require("./Controller/ControllerUserProfile")
 const { response } = require('express');
 const routes = express.Router();
 
@@ -27,13 +27,22 @@ routes.route('/userprofile/:id')
     const {name, email, password} = req.body
     const {id} = req.params
     
-    UserProfileUpdate({id, name, email, password})
+    controllerUserProfile = new ControllerUserProfile({name, email, password})
+
+    controllerUserProfile.update(id)
     .then(updated => {
         res.json({updated:updated})
     })
 })
 .delete((req, res) => {
-    res.json({"id":req.params.id})
+    const {id} = req.params
+
+    controllerUserProfile = new ControllerUserProfile({})
+
+    controllerUserProfile.delete(id)
+    .then(updated => {
+        res.json({updated:updated})
+    })
 })
 
 routes.post('/userprofile', (req, res) => {
