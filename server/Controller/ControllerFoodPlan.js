@@ -1,0 +1,9 @@
+class ControllerFoodPlan {
+    constructor() {
+
+    }
+
+    save() {
+        
+    }
+}

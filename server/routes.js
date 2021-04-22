@@ -1,8 +1,10 @@
 const express = require('express');
-const {UserProfileFindAll, UserProfileSave, UserProfileFindId, UserProfileUpdate} = require("./UserProfile");
+const {UserProfileFindAll, UserProfileSave, UserProfileFindId, UserProfileUpdate, MetabolismSave, MetabolismDelete} = require("./Models");
 const { response } = require('express');
 const routes = express.Router();
 
+
+// User Profile
 routes.get('/userprofile', (req, res) => {
     UserProfileFindAll()
     .then(paciente => {
@@ -43,5 +45,21 @@ routes.post('/userprofile', (req, res) => {
     })
 })
 
+
+// Metabolism
+routes.route('/metabolism/:id')
+.delete((req, res) => {
+    const {id} = req.params
+
+    MetabolismDelete(id)
+})
+
+
+routes.post('/metabolism', (req, res) => {
+    const {sexo, idade, peso, altura, nivelAtividade, idUserProfile, metabolismBasal, keepTheWeight, loseWeight, gainWeight} = req.body
+
+    MetabolismSave({sexo, idade, peso, altura, nivelAtividade, idUserProfile, metabolismBasal, keepTheWeight, loseWeight, gainWeight})
+
+})
 
 module.exports = routes;
