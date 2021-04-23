@@ -33,6 +33,9 @@ routes.route('/userprofile/:id')
     .then(updated => {
         res.json({updated:updated})
     })
+    .catch(erro => {
+        res.json({erro})
+    })
 })
 .delete((req, res) => {
     const {id} = req.params
@@ -43,14 +46,22 @@ routes.route('/userprofile/:id')
     .then(updated => {
         res.json({updated:updated})
     })
+    .catch(erro => {
+        res.json({erro})
+    })
 })
 
 routes.post('/userprofile', (req, res) => {
     const {name, email, password} = req.body
     
-    UserProfileSave({name, email, password})
+    controllerUserProfile = new ControllerUserProfile({name, email, password})
+
+    controllerUserProfile.save()
     .then(user => {
         res.json({id: user})
+    })
+    .catch(erro => {
+        res.json({erro})
     })
 })
 
